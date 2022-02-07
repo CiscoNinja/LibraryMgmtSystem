@@ -1,0 +1,28 @@
+<?php echo $log_msg1; ?>
+<form method="post" action="act/addcategoryact.php">
+  <table>
+    <tr>
+      <th>Category</th>
+      <th>Action</th>
+    </tr>  
+      <?php
+        $que="select * from book_category";
+        $res=mysqli_query($con,$que);
+        while($dat=mysqli_fetch_assoc($res)){?>
+      <tr>
+      <td><?php echo $dat['book_category_name'];?></td>
+        <td><a href="delcat.php?u=<?php echo $dat['book_category_id'];?>">Delete</a></td>
+    </tr>
+        <?php } ?>
+  </table>  
+  <table>
+  <tr>
+    <td><h2> category </h2></td>
+    <td> <input type="text" name="category"> </td>
+  </tr>
+    <td><input type="hidden" value="insert" > </td>
+        <td><input type="submit" value="Ajouter Category"> </td> 
+      </tr>
+  </table>  
+</form>
+
